@@ -1,14 +1,32 @@
 package teamcalypso;
 
 public class Sorter<E extends Storage> {
-    //TODO implement logic for this class to sort items by count descending and type ascending (in case some of items is with the same count)
+
+    private final E[] storage;
 
     public Sorter(E[] data) {
-        //TODO implement method body
+        this.storage = data;
     }
 
     public E[] sort() {
-        //TODO implement method body
-        return null;
+        E temporary;
+        for (int i = 0; i < storage.length; i++) {
+            for (int j = 0; j < storage.length; j++) {
+                if (storage[i].getSize() == storage[j].getSize()) {
+                    if (storage[i].getType().compareTo(storage[j].getType()) < 0) {
+                        temporary = storage[i];
+                        storage[i] = storage[j];
+                        storage[j] = temporary;
+                    }
+                }
+                if (storage[i].getSize() > storage[j].getSize()) {
+                    temporary = storage[i];
+                    storage[i] = storage[j];
+                    storage[j] = temporary;
+
+                }
+            }
+        }
+        return storage;
     }
 }

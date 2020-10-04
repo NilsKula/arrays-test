@@ -14,7 +14,9 @@ public class Starter {
 
     public static void main(String[] args) {
         System.out.println("This application prints sorted storage! Sort is done by size descending and type ascending");
-        final Sorter<Storage> sorter = new Sorter<>(data);
+        final Storage[] filtered = new Filter<>(data).capitalTypeFilter();
+
+        final Sorter<Storage> sorter = new Sorter<>(filtered);
 
         final Iterator<Storage> iterator = new Iterator<>(sorter.sort());
 
